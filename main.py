@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
-from scraper import Scraper
-from exceptions import CityNotValid, CountryNotValid
+from .scraper import Scraper
+from .exceptions import CityNotValid, CountryNotValid
 
 app = FastAPI()
 scraper = Scraper()
@@ -41,7 +41,7 @@ async def daily(country: str, city: str):
 
 
 @app.get('/weekly')
-async def daily(country: str, city: str):
+async def weekly(country: str, city: str):
     try:
         prayer_times = await scraper.get_weekly_prayer_times(country=country, city=city)
         return {'ok': True, 'prayerTimes': prayer_times}
@@ -52,7 +52,7 @@ async def daily(country: str, city: str):
 
 
 @app.get('/monthly')
-async def daily(country: str, city: str):
+async def monthly(country: str, city: str):
     try:
         prayer_times = await scraper.get_monthly_prayer_times(country=country, city=city)
         return {'ok': True, 'prayerTimes': prayer_times}
