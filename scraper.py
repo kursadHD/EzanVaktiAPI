@@ -1,8 +1,8 @@
 import aiohttp
 from typing import Dict, Any, Callable
 from unidecode import unidecode
-from country_list import COUNTRY_LIST
-from exceptions import CountryNotValid, CityNotValid
+from .country_list import COUNTRY_LIST
+from .exceptions import CountryNotValid, CityNotValid
 
 
 def uppercase_and_unidecode_params(func: Callable) -> Callable:
